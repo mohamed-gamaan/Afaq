@@ -223,17 +223,19 @@ ul {
     top: var(--spacing-md);
     left: var(--spacing-md);
     z-index: 1000;
-    background: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     color: var(--color-white);
-    border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 50px;
     font-family: inherit;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 html[lang="en"] .lang-toggle {
@@ -242,8 +244,15 @@ html[lang="en"] .lang-toggle {
 }
 
 .lang-toggle:hover {
-    background: var(--color-primary-light);
-    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--color-gold), #d4a574);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.lang-toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* WhatsApp Floating Button */
@@ -374,11 +383,19 @@ html[lang="en"] .whatsapp-float {
     padding: 0;
 }
 
+/* Mobile Menu Base Restructuring */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        /* Hide by default to prevent layout issues before JS loads or if CSS fails */
+    }
+}
+
 .nav-link {
     position: relative;
     padding: var(--spacing-xs) 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 600;
     color: var(--color-gray-700);
     transition: color var(--transition-fast);
 }
@@ -914,6 +931,43 @@ html[lang="en"] .whatsapp-float {
 .footer-text {
     opacity: 0.7;
     font-size: 0.875rem;
+}
+
+/* ========================================
+   Mobile Styles (Max-width: 768px)
+   ======================================== */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        padding: var(--spacing-xl) 0;
+        gap: var(--spacing-lg);
+        transform: translateY(-150%);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+    }
+
+    .nav-link {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--color-gray-800);
+    }
 }
 
 /* ========================================
