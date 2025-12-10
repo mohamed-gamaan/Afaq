@@ -488,6 +488,14 @@ html[lang="en"] .whatsapp-float {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.badge-number {
+    font-size: 1.3em;
+    font-weight: 900;
+    color: var(--color-gold);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.05em;
+}
+
 .hero h1 {
     color: var(--color-white);
     font-size: 2.25rem;
@@ -1341,10 +1349,6 @@ html[lang="en"] .whatsapp-float {
 .animate-on-scroll.visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-}
-
-.fade-up {
-    /* Uses default transition */
 }
 
 .hero-animate {
