@@ -154,4 +154,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         heroScroll.style.cursor = 'pointer';
     }
+
+    // WhatsApp Floating Button Visibility Logic
+    const whatsappFloat = document.getElementById('whatsappFloat');
+    const heroCta = document.querySelector('.hero .btn-primary');
+    const contactCta = document.getElementById('contactCta');
+
+    if (whatsappFloat && heroCta && contactCta) {
+        let heroCtaVisible = true;
+        let contactCtaVisible = false;
+
+        const floatObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.target === heroCta || entry.target.closest('.hero')) {
+                    heroCtaVisible = entry.isIntersecting;
+                }
+                if (entry.target === contactCta) {
+                    contactCtaVisible = entry.isIntersecting;
+                }
+
+                // Show floating button only when hero CTA is NOT visible AND contact CTA is NOT visible
+                if (!heroCtaVisible && !contactCtaVisible) {
+                    whatsappFloat.classList.remove('hidden');
+                } else {
+                    whatsappFloat.classList.add('hidden');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        floatObserver.observe(heroCta);
+        floatObserver.observe(contactCta);
+    }
 });

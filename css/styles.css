@@ -269,8 +269,16 @@ html[lang="en"] .lang-toggle {
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: 50px;
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-    transition: all var(--transition-base);
+    transition: all 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
     animation: pulse 2s infinite;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.whatsapp-float.hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    pointer-events: none;
 }
 
 html[lang="en"] .whatsapp-float {
@@ -860,15 +868,15 @@ html[lang="en"] .whatsapp-float {
 
 .contact-cta {
     text-align: center;
-    background: linear-gradient(135deg, #128C7E, #25D366);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     /* Pattern Overlay */
-    background-image: linear-gradient(135deg, rgba(18, 140, 126, 0.9), rgba(37, 211, 102, 0.9)),
-        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+    background-image: linear-gradient(135deg, rgba(22, 33, 62, 0.95), rgba(46, 73, 117, 0.95)),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 10px);
     padding: var(--spacing-3xl) var(--spacing-xl);
     border-radius: var(--radius-xl);
     color: var(--color-white);
-    box-shadow: 0 20px 40px rgba(37, 211, 102, 0.25);
+    box-shadow: 0 20px 40px rgba(22, 33, 62, 0.25);
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
