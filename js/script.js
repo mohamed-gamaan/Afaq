@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.15
     };
 
     const observer = new IntersectionObserver(function (entries) {
@@ -109,26 +109,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, observerOptions);
 
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll('.about-card, .service-card, .contact-item');
+    // Observe elements with .animate-on-scroll class
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
     animateElements.forEach(function (el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
 
-    // Add visible class styles dynamically
-    const style = document.createElement('style');
-    style.textContent = `
-        .about-card.visible,
-        .service-card.visible,
-        .contact-item.visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
+    // Fallback: If elements are manually selected (backward compatibility or specific targeting)
+    const legacyElements = document.querySelectorAll('.about-card:not(.animate-on-scroll), .service-card:not(.animate-on-scroll), .contact-item:not(.animate-on-scroll)');
+    legacyElements.forEach(function (el) {
+        el.classList.add('animate-on-scroll', 'fade-up'); // Default animation
+        observer.observe(el);
+    });
+
+    // Dynamic style injection is no longer needed as we use CSS classes now, 
+    // but we can keep a cleanup or leave it if it was useful. 
+    // Removing the dynamic style block as it conflicts with new CSS classes.
+
+    // Hero Animation on Load
+    function animateHero() {
+        const heroElements = document.querySelectorAll('.hero-animate');
+        heroElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('visible');
+            }, 300 + (index * 200));
+        });
+    }
+
+    animateHero();
 
     // Hero scroll indicator click
     const heroScroll = document.querySelector('.hero-scroll');
