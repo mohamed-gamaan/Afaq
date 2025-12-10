@@ -303,10 +303,17 @@ html[lang="en"] .whatsapp-float {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding: var(--spacing-sm) 0;
+    transition: all var(--transition-base);
+}
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-sm);
 }
 
 .nav {
@@ -317,8 +324,13 @@ html[lang="en"] .whatsapp-float {
 }
 
 .logo img {
-    height: 50px;
+    height: 55px;
     width: auto;
+    transition: transform var(--transition-base);
+}
+
+.logo:hover img {
+    transform: scale(1.02);
 }
 
 .nav-toggle {
@@ -353,37 +365,39 @@ html[lang="en"] .whatsapp-float {
 }
 
 .nav-menu {
-    position: fixed;
-    top: 66px;
-    left: 0;
-    right: 0;
-    background: var(--color-white);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-150%);
-    opacity: 0;
-    transition: all var(--transition-base);
-}
-
-.nav-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.nav-menu li {
-    margin-bottom: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-lg);
 }
 
 .nav-link {
-    display: block;
-    padding: var(--spacing-sm) 0;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-gray-700);
+    position: relative;
+    padding: var(--spacing-xs) 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-gray-800);
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--color-gold);
+    color: var(--color-primary);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 /* Hero Section */

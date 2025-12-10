@@ -1,0 +1,60 @@
+/* Responsive Mobile Menu */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 75px; /* Adjust based on header height */
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: var(--spacing-2xl) var(--spacing-lg);
+        gap: var(--spacing-lg);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-link {
+        font-size: 1.25rem;
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--color-gray-100);
+        text-align: center;
+    }
+
+    .nav-link::after {
+        display: none; /* No underline anim on mobile */
+    }
+    
+    .nav-toggle {
+        display: flex; /* Ensure toggle is visible on mobile */
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        display: flex;
+        flex-direction: row;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        visibility: visible;
+    }
+}
