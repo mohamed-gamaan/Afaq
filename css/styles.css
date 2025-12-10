@@ -114,6 +114,12 @@ html[lang="en"] body {
     font-family: var(--font-en);
 }
 
+/* Custom Selection Color */
+::selection {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+}
+
 /* Container */
 .container {
     width: 100%;
