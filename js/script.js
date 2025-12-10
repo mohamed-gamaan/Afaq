@@ -115,17 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 
-    // Fallback: If elements are manually selected (backward compatibility or specific targeting)
-    const legacyElements = document.querySelectorAll('.about-card:not(.animate-on-scroll), .service-card:not(.animate-on-scroll), .contact-item:not(.animate-on-scroll)');
-    legacyElements.forEach(function (el) {
-        el.classList.add('animate-on-scroll', 'fade-up'); // Default animation
-        observer.observe(el);
-    });
-
-    // Dynamic style injection is no longer needed as we use CSS classes now, 
-    // but we can keep a cleanup or leave it if it was useful. 
-    // Removing the dynamic style block as it conflicts with new CSS classes.
-
     // Hero Animation on Load
     function animateHero() {
         const heroElements = document.querySelectorAll('.hero-animate');
