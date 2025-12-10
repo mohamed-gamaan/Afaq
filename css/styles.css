@@ -312,17 +312,15 @@ html[lang="en"] .whatsapp-float {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     padding: var(--spacing-sm) 0;
     transition: all var(--transition-base);
 }
 
 .header.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: var(--shadow-sm);
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav {
@@ -460,15 +458,20 @@ html[lang="en"] .whatsapp-float {
 
 .hero-badge {
     display: inline-block;
-    background: rgba(212, 165, 116, 0.2);
-    border: 1px solid rgba(212, 165, 116, 0.5);
-    color: var(--color-gold-light);
-    padding: var(--spacing-sm) var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    padding: var(--spacing-sm) var(--spacing-xl);
     border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.95rem;
+    font-weight: 700;
     margin-bottom: var(--spacing-lg);
-    backdrop-filter: blur(5px);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
@@ -573,14 +576,66 @@ html[lang="en"] .whatsapp-float {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     text-align: center;
-    transition: all var(--transition-base);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--color-gray-200);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--color-primary);
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.about-card:hover::before {
+    height: 100%;
+}
+
+.about-card>* {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.about-card:hover>* {
+    transform: translateY(-8px);
+}
+
+.about-card h3 {
+    transition-delay: 0.1s;
+}
+
+.about-card p {
+    transition-delay: 0.15s;
 }
 
 .about-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--color-gold);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-card:hover .card-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.about-card:hover .card-icon svg {
+    stroke: var(--color-white);
+}
+
+.about-card:hover h3,
+.about-card:hover p {
+    color: var(--color-white);
 }
 
 .card-icon {
@@ -592,6 +647,7 @@ html[lang="en"] .whatsapp-float {
     justify-content: center;
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     border-radius: var(--radius-full);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-icon svg {
@@ -604,12 +660,14 @@ html[lang="en"] .whatsapp-float {
     color: var(--color-primary);
     margin-bottom: var(--spacing-md);
     font-size: 1.25rem;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .about-card p {
     color: var(--color-gray-600);
     font-size: 0.95rem;
     line-height: 1.7;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Services Section */
@@ -629,13 +687,75 @@ html[lang="en"] .whatsapp-float {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--color-gray-200);
-    transition: all var(--transition-base);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--color-primary);
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.service-card:hover::before {
+    height: 100%;
+}
+
+.service-card>* {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card:hover>* {
+    transform: translateY(-8px);
+}
+
+.service-card h3 {
+    transition-delay: 0.1s;
+}
+
+.service-card p {
+    transition-delay: 0.15s;
+}
+
+.service-card .service-list {
+    transition-delay: 0.2s;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--color-gold);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover .service-list li {
+    color: var(--color-white);
+}
+
+.service-card:hover .service-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.service-card:hover .service-icon svg {
+    stroke: var(--color-white);
+}
+
+.service-card:hover .service-list li {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
 }
 
 .service-icon {
@@ -647,6 +767,7 @@ html[lang="en"] .whatsapp-float {
     background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
     border-radius: var(--radius-md);
     margin-bottom: var(--spacing-md);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-icon svg {
@@ -659,12 +780,14 @@ html[lang="en"] .whatsapp-float {
     color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
     font-size: 1.1rem;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card>p {
     color: var(--color-gray-600);
     font-size: 0.9rem;
     margin-bottom: var(--spacing-md);
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-list {
@@ -679,6 +802,7 @@ html[lang="en"] .whatsapp-float {
     border-radius: 50px;
     font-size: 0.8rem;
     color: var(--color-gray-700);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Services CTA Improvement */
@@ -1231,15 +1355,4 @@ html[lang="en"] .whatsapp-float {
     transition-delay: 0.5s;
 }
 
-/* Enhanced Card Hovers */
-.service-card,
-.about-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.service-card:hover,
-.about-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-gold);
-}
+/* Enhanced Card Hovers - Defined in card sections above */
