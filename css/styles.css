@@ -395,13 +395,7 @@ html[lang="en"] .whatsapp-float {
     padding: 0;
 }
 
-/* Mobile Menu Base Restructuring */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-        /* Hide by default to prevent layout issues before JS loads or if CSS fails */
-    }
-}
+
 
 .nav-link {
     position: relative;
@@ -872,7 +866,6 @@ html[lang="en"] .whatsapp-float {
 .services-cta .btn {
     position: relative;
     z-index: 1;
-    animation: pulse-glow 2s infinite;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -1201,14 +1194,6 @@ html[lang="en"] .whatsapp-float {
    Desktop Breakpoint (1024px and up)
    ======================================== */
 @media (min-width: 1024px) {
-    h1 {
-        font-size: 3rem;
-    }
-
-    h2 {
-        font-size: 2.5rem;
-    }
-
     .logo img {
         height: 60px;
     }
@@ -1313,42 +1298,7 @@ html[lang="en"] .whatsapp-float {
     opacity: 0.9;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 40px, 0);
-    }
 
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translate3d(-30px, 0, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translate3d(30px, 0, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
 
 .animate-on-scroll {
     opacity: 0;
@@ -1392,5 +1342,3 @@ html[lang="en"] .whatsapp-float {
 .delay-500 {
     transition-delay: 0.5s;
 }
-
-/* Enhanced Card Hovers - Defined in card sections above */
