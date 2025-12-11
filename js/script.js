@@ -148,10 +148,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const whatsappFloat = document.getElementById('whatsappFloat');
     const heroCta = document.querySelector('.hero .btn-primary');
     const contactCta = document.getElementById('contactCta');
+    const footer = document.querySelector('.footer');
 
-    if (whatsappFloat && heroCta && contactCta) {
+    if (whatsappFloat && heroCta && contactCta && footer) {
         let heroCtaVisible = true;
         let contactCtaVisible = false;
+        let footerVisible = false;
 
         const floatObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -161,17 +163,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (entry.target === contactCta) {
                     contactCtaVisible = entry.isIntersecting;
                 }
+                if (entry.target === footer) {
+                    footerVisible = entry.isIntersecting;
+                }
 
-                // Show floating button only when hero CTA is NOT visible AND contact CTA is NOT visible
-                if (!heroCtaVisible && !contactCtaVisible) {
+                // Show floating button only when:
+                // 1. Hero CTA is NOT visible (not at top)
+                // 2. Contact CTA is NOT visible (not at contact section)
+                // 3. Footer is NOT visible (not at very bottom)
+                if (!heroCtaVisible && !contactCtaVisible && !footerVisible) {
                     whatsappFloat.classList.remove('hidden');
                 } else {
                     whatsappFloat.classList.add('hidden');
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.1 });
 
         floatObserver.observe(heroCta);
         floatObserver.observe(contactCta);
+        floatObserver.observe(footer);
     }
 });
