@@ -221,34 +221,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Copy Phone Number
-    const phoneNumber = document.getElementById('phoneNumber');
-    if (phoneNumber) {
-        phoneNumber.addEventListener('click', function () {
-            const text = this.childNodes[0].nodeValue.trim();
 
-            navigator.clipboard.writeText(text).then(() => {
-                const tooltip = this.querySelector('.copy-tooltip');
-
-                // Haptic Feedback for Mobile
-                if (navigator.vibrate) {
-                    navigator.vibrate(50);
-                }
-
-                // Add visual feedback classes
-                this.classList.add('copied');
-                tooltip.classList.add('show');
-
-                const isAr = html.getAttribute('lang') === 'ar';
-                tooltip.textContent = isAr ? '✔ تم النسخ' : '✔ Copied';
-
-                setTimeout(() => {
-                    this.classList.remove('copied');
-                    tooltip.classList.remove('show');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        });
-    }
 });
