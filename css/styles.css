@@ -576,21 +576,166 @@ html[lang="en"] .whatsapp-float {
     gap: var(--spacing-2xl);
 }
 
-.about-text p {
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-gray-700);
-    text-align: justify;
+/* About Features */
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
 }
 
-.about-intro {
+.about-feature {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.3s ease;
+}
+
+.about-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-gold);
+}
+
+.about-feature .feature-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+    border-radius: var(--radius-md);
+}
+
+.about-feature .feature-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-primary-dark);
+}
+
+.about-feature .feature-content h4 {
     font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-gray-800);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.about-feature .feature-content p {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.about-feature .feature-content strong {
+    color: var(--color-primary);
+}
+
+/* Highlight Class */
+.highlight {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+    color: var(--color-primary-dark);
+    padding: 0.1em 0.5em;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+}
+
+/* Stat Link */
+.stat-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.stat-link:hover {
+    transform: scale(1.05);
+    color: inherit;
+}
+
+.stat-link .stat-label small {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+    .about-features {
+        grid-template-columns: 1fr;
+    }
 }
 
 .about-cards {
     display: grid;
     gap: var(--spacing-lg);
+}
+
+/* About Stats */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: var(--radius-lg);
+    color: var(--color-white);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-item {
+    padding: var(--spacing-md);
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+html[lang="ar"] .stat-item:not(:last-child)::after {
+    right: auto;
+    left: 0;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+
+
+
+@media (max-width: 576px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .stat-item::after {
+        display: none !important;
+    }
 }
 
 .about-card {
@@ -761,7 +906,10 @@ html[lang="en"] .whatsapp-float {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.service-card:hover h3,
+.service-card:hover h3 {
+    color: var(--color-gold);
+}
+
 .service-card:hover p,
 .service-card:hover .service-list li {
     color: var(--color-white);

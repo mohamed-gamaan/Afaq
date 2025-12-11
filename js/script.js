@@ -183,4 +183,41 @@ document.addEventListener('DOMContentLoaded', function () {
         floatObserver.observe(contactCta);
         floatObserver.observe(footer);
     }
+    // Stats Animation
+    const statsSection = document.getElementById('aboutStats');
+    if (statsSection) {
+        let animated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animateStats();
+                    animated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statsSection);
+
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const noPlus = stat.getAttribute('data-no-plus') === 'true';
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 16ms per frame (approx 60fps)
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        stat.textContent = noPlus ? target : '+' + target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = noPlus ? Math.floor(current) : '+' + Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+    }
 });
