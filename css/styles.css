@@ -1542,3 +1542,14 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
 }
 
 /* Clickable Phone Number */
+
+/* Prevent navbar overlap with language button on smaller desktops */
+@media (min-width: 1025px) and (max-width: 1500px) {
+    html[lang="ar"] .nav {
+        padding-left: 110px;
+    }
+
+    html[lang="en"] .nav {
+        padding-right: 110px;
+    }
+}
