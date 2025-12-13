@@ -1324,7 +1324,7 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
 }
 
 /* ========================================
-   Tablet Breakpoint (768px and up)
+   Desktop Styles (1025px and up)
    ======================================== */
 @media (min-width: 1025px) {
     .container {
@@ -1391,7 +1391,7 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
 /* ========================================
    Desktop Breakpoint (1024px and up)
    ======================================== */
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
     .logo img {
         height: 60px;
     }
@@ -1427,6 +1427,17 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
 
     .about-card {
         padding: var(--spacing-2xl);
+    }
+}
+
+/* Prevent navbar overlap with language button on smaller desktops */
+@media (min-width: 1025px) and (max-width: 1500px) {
+    html[lang="ar"] .nav {
+        padding-left: 110px;
+    }
+
+    html[lang="en"] .nav {
+        padding-right: 110px;
     }
 }
 
@@ -1539,17 +1550,4 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
 
 .delay-500 {
     transition-delay: 0.5s;
-}
-
-/* Clickable Phone Number */
-
-/* Prevent navbar overlap with language button on smaller desktops */
-@media (min-width: 1025px) and (max-width: 1500px) {
-    html[lang="ar"] .nav {
-        padding-left: 110px;
-    }
-
-    html[lang="en"] .nav {
-        padding-right: 110px;
-    }
 }
