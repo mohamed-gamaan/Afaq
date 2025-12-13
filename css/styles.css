@@ -226,7 +226,10 @@ ul {
 /* Language Toggle Button */
 .lang-toggle {
     position: fixed;
-    top: var(--spacing-md);
+    /* Center vertically in navbar: (padding-top + logo-height/2) */
+    /* Mobile: 8px + 25px = 33px */
+    top: 33px;
+    transform: translateY(-50%);
     left: var(--spacing-md);
     z-index: 1000;
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
@@ -251,13 +254,13 @@ html[lang="en"] .lang-toggle {
 
 .lang-toggle:hover {
     background: linear-gradient(135deg, var(--color-gold), #d4a574);
-    transform: translateY(-2px);
+    transform: translateY(-50%) translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
 .lang-toggle:active {
-    transform: translateY(0);
+    transform: translateY(-50%);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -1180,6 +1183,14 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
     background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-gold);
 }
 
 .contact-icon {
@@ -1392,8 +1403,18 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
    Desktop Breakpoint (1024px and up)
    ======================================== */
 @media (min-width: 1025px) {
-    .logo img {
+    .logo-icon {
         height: 60px;
+    }
+
+    /* Navbar logo text - desktop */
+    .logo .logo-text {
+        height: 45px;
+    }
+
+    /* Footer logo text - desktop */
+    .footer-logo .logo-text {
+        height: 50px;
     }
 
     .hero {
@@ -1438,6 +1459,14 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
 
     html[lang="en"] .nav {
         padding-right: 110px;
+    }
+}
+
+/* Desktop: Adjust language toggle position for taller navbar */
+@media (min-width: 1025px) {
+    .lang-toggle {
+        /* Desktop: 8px + 30px = 38px */
+        top: 38px;
     }
 }
 
@@ -1491,7 +1520,14 @@ html[lang="ar"] .stat-item:not(:last-child)::after {
     width: auto;
 }
 
-.logo-text {
+/* Navbar logo text - slightly smaller than icon */
+.logo .logo-text {
+    height: 35px;
+    width: auto;
+}
+
+/* Footer logo text - original size */
+.footer-logo .logo-text {
     height: 40px;
     width: auto;
 }
